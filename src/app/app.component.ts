@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public roomId: any;
   public messageText: any;
-  public messageArray: { user: string, message: string }[] = [];
+  public messageArray: { user: string, message: string, room: string }[] = [];
   private storageArray = [];
 
   public showScreen = false;
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     {
       id: 2,
-      name: 'Wade Warren',
+      name: 'Alo',
       phone: '9876543210',
       image: 'assets/user/user-2.png',
       roomId: {
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     {
       id: 3,
-      name: 'Albert Flores',
+      name: 'Akhil',
       phone: '9988776655',
       image: 'assets/user/user-3.png',
       roomId: {
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     {
       id: 4,
-      name: 'Dianne Russell',
+      name: 'Lenin',
       phone: '9876556789',
       image: 'assets/user/user-4.png',
       roomId: {
@@ -77,12 +77,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.chatService.getMessage()
       .subscribe((data: { user: string, room: string, message: string }) => {
-        // this.messageArray.push(data);
+        this.messageArray.push(data);
         if (this.roomId) {
           setTimeout(() => {
             this.storageArray = this.chatService.getStorage();
-            // const storeIndex = this.storageArray
-            //   .findIndex((storage) => storage.roomId === this.roomId);
+            // const storeIndex = this.storageArray.findIndex((storage) => storage.roomId === this.roomId);
             // this.messageArray = this.storageArray[storeIndex].chats;
           }, 500);
         }
@@ -155,8 +154,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       // this.storageArray.push(updateStorage);
     // }
 
-    // this.chatService.setStorage(this.storageArray);
-    // this.messageText = '';
+    this.chatService.setStorage(this.storageArray);
+    this.messageText = '';
   }
 
 }

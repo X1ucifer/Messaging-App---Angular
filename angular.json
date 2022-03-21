@@ -6,8 +6,8 @@
     "messaging-app": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       },
       "root": "",
@@ -95,12 +95,17 @@
             ],
             "styles": [
               "./node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "messaging-app"
